@@ -47,8 +47,10 @@ export async function runPipeline(client, topic, o = {}, { onStep = () => {}, si
   }
   const outlineHint = gap ? (gap.outline?.sections || []).map(headingOf).filter(Boolean).slice(0, 12) : [];
   const params = { topic, keyword: opts.keyword || topic, ...(opts.article || {}) };
-  if (outlineHint.length) params.outline_hint = outlineHint;
   if (!params.word_count && gap?.target_words) params.word_count = Math.min(4000, Math.max(300, gap.target_words));
+  // Keep the outline proportionate to the length: roughly 150 words per H2 (a 10-section outline ignores a 400-word target).
+  const maxSections = Math.max(3, Math.floor((params.word_count || 1500) / 150));
+  if (outlineHint.length) params.outline_hint = outlineHint.slice(0, maxSections);
 
   // 2-4. Draft, then check; regenerate up to `retries` times if the gate fails.
   let attempt = 0, article, factCheck = null, originality = null, reasons = [];
