@@ -1,0 +1,16 @@
+{
+  "name": "ai-content-pipeline",
+  "version": "1.0.0",
+  "description": "Quality-gated AI content pipeline: competitor gap analysis, article generation, fact check and originality check in one command. Powered by the RapidTextAI API.",
+  "type": "module",
+  "bin": { "ai-content-pipeline": "bin/cli.js" },
+  "scripts": { "test": "node --test test/*.test.js",
+    "demo": "node test/demo.js" },
+  "engines": { "node": ">=18" },
+  "keywords": ["ai", "content-pipeline", "seo", "article-generator", "fact-checking", "plagiarism-checker", "content-automation", "quality-gate", "rapidtextai", "cli", "nodejs"],
+  "repository": { "type": "git", "url": "git+https://github.com/alisaleem252/ai-content-pipeline.git" },
+  "homepage": "https://github.com/alisaleem252/ai-content-pipeline#readme",
+  "bugs": { "url": "https://github.com/alisaleem252/ai-content-pipeline/issues" },
+  "files": ["bin", "src", ".env.example", "README.md"],
+  "dependencies": {}
+}
